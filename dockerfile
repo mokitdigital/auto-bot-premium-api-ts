@@ -1,8 +1,10 @@
 # Etapa de build
 FROM node:18 AS build
 
-# Instala Python e ferramentas de build necessárias para pacotes nativos
-RUN apt-get update && apt-get install -y python3 g++ make && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && \
+  apt-get install -y python3 g++ make && \
+  ln -s /usr/bin/python3 /usr/bin/python && \
+  rm -rf /var/lib/apt/lists/*
 
 # Cria diretório da aplicação
 WORKDIR /app
